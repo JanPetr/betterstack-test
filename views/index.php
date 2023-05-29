@@ -32,8 +32,13 @@
   <?php foreach ($users as $user) { ?>
     <tr>
       <td><?= escape($user->getName()) ?></td>
-      <td><?= escape($user->getEmail()) ?></td>
-      <td><?= escape($user->getPhoneNumber()) ?></td>
+      <td><a href="mailto:<?= escape($user->getEmail()) ?>"><?= escape($user->getEmail()) ?></a></td>
+      <td><?php if (empty($user->getPhoneNumber())) { ?>
+          <i>No phone number :(</i>
+          <?php } else { ?>
+              <?= escape($user->getPhoneNumber()) ?>
+          <?php } ?>
+      </td>
       <td class="city"><?= escape($user->getCity()) ?></td>
     </tr>
   <?php } ?>
@@ -58,7 +63,6 @@
           <div class="col-md-3">
             <label class="sr-only" for="phone-number">Phone</label>
             <input name="phone-number" class="form-control" input="tel" id="phone-number" placeholder="+420123456789"
-                   required
                    maxlength="50"/>
           </div>
 

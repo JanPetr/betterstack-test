@@ -1,4 +1,13 @@
 // create user using AJAX
+function escapeHtml(unsafe)
+{
+	return unsafe
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+}
 
 function createUser(e) {
 	e.preventDefault();
@@ -16,12 +25,18 @@ function createUser(e) {
 			const success = $("<div class='alert alert-success' role='alert'>").text("New user added");
 			$("#message").html(success);
 			
+			const pn = $("#phone-number", form).val();
+			let pnStr = "<i>No phone number :(</i>";
+			if (pn.length > 0) {
+				pnStr = escapeHtml(pn);
+			}
+			
 			$("#users tbody .add-new-user-row").before(
 				"<tr>" +
-				"<td>" + $("#name", form).val() + "</td>" +
-				"<td>" + $("#email", form).val() + "</td>" +
-				"<td>" + $("#phone-number", form).val() + "</td>" +
-				"<td>" + $("#city", form).val() + "</td>" +
+				"<td>" + escapeHtml($("#name", form).val()) + "</td>" +
+				"<td><a href=\"mailto:" + escapeHtml($("#email", form).val()) + "\">" + escapeHtml($("#email", form).val()) + "</a></td>" +
+				"<td>" + pnStr + "</td>" +
+				"<td>" + escapeHtml($("#city", form).val()) + "</td>" +
 				"</tr>"
 			);
 			
@@ -78,7 +93,7 @@ function filterByCity(e) {
 	if (!areThereVisibleRows) {
 		const noResults = document.createElement('tr');
 		noResults.setAttribute('id', 'no-results');
-		noResults.innerHTML = '<td colspan="4" class="text-center">No results found for query "' + filterValue + '".</td>';
+		noResults.innerHTML = '<td colspan="4" class="text-center">No results found for query "' + escapeHtml(filterValue) + '".</td>';
 		document.querySelector('#users tbody').appendChild(noResults);
 	}
 }

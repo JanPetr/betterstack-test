@@ -85,12 +85,8 @@ function validateForm($data)
         $errors[] = 'City is required';
     }
 
-    if (empty($data['phone-number'])) {
-        $errors[] = 'Phone number is required';
-    }
-
     // validate phone number format
-    if (!preg_match('/^\+?[0-9]{3,}$/', $data['phone-number'])) {
+    if (!empty($data['phone-number']) && !preg_match('/^\+?[0-9]{3,}$/', $data['phone-number'])) {
         $errors[] = 'Phone number is not valid, correct format is `+420123456789`';
     }
 
