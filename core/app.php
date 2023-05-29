@@ -11,28 +11,28 @@ foreach (glob(dirname(__FILE__).'/../models/*.php') as $filename){
  * provides interface for database manipulation, accessing config and rendering views
  */
 class App {
-	
+
 	private $directory;
 	public $db;
 	public $config;
-	
+
 	public function __construct(){
 		// Save current directory path
 		$this->directory = dirname(__FILE__);
-		
+
 		// Load configuration options
 		$this->config = require $this->directory.'/config.php';
-			
+
 		// Load database instance and tell it to connect with given config
 		$this->db = require $this->directory.'/database.php';
 		$this->db->connect($this->config->database);
 
         session_start();
-	}	
-	
+	}
+
 	/**
 	 * Renders given view with given set of variables
-	 * 
+	 *
 	 * param $viewfile: path of the view file relative to the views direcotry, without the ending .php
 	 * param $vars: array of variables to be accessed insede the views
 	 */
@@ -41,7 +41,7 @@ class App {
 		foreach ($vars as $key => $value) {
 			$$key = $value;
 		}
-		
+
 		// Start capturing of output
 		ob_start();
 		include '../views/'.$viewfile.'.php';
@@ -52,15 +52,28 @@ class App {
 		// Render $content in layout
 		include '../views/layout.php';
 	}
-	
+
 }
 
-function escape($string){
+function generateCSRFToken() {
+    return md5(uniqid(mt_rand(), true));;
+}
+
+function escape($string) {
     if ($string === null) {
         return null;
     }
 
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
+function isAjax() {
+    if(strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') == 'xmlhttprequest')
+    {
+        return true;
+    }
+
+    return false;
 }
 
 return new App();
