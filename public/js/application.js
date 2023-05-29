@@ -31,7 +31,7 @@ function createUser(e) {
 				pnStr = escapeHtml(pn);
 			}
 			
-			$("#users tbody .add-new-user-row").before(
+			$("#users tbody").append(
 				"<tr>" +
 				"<td>" + escapeHtml($("#name", form).val()) + "</td>" +
 				"<td><a href=\"mailto:" + escapeHtml($("#email", form).val()) + "\">" + escapeHtml($("#email", form).val()) + "</a></td>" +
