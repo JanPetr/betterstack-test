@@ -29,14 +29,19 @@ function createUser(e) {
 			$("#token", form).val(res.token); // set new CSRF token
 		},
 		error: function (res, status, error) {
+			const msg = $("#message");
+			
 			const jsonRes = res.responseJSON
 			$("#token", form).val(jsonRes.token); // set new CSRF token
 			
-			$("#message").html(); // reset notice content
+			msg.html(); // reset notice content
+			let errs = ""
 			jsonRes.errors.forEach(error => {
-				const alert = $("<div class='alert alert-danger' role='alert'>").text(error);
-				$("#message").append(alert);
+				errs += "<li>" + error + "</li>";
 			})
+			
+			const alert = $("<div class='alert alert-danger' role='alert'>").innerHTML("<ul>" + errs + "</ul>");
+			msg.append(alert);
 		}
 	});
 }
