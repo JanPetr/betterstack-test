@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: / # don't index entire site, it's just test app
