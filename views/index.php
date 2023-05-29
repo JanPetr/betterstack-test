@@ -1,4 +1,4 @@
-<h1>Manage your users like a pro!</h1>
+<h1>Manage your users like a Pro!</h1>
 
 <?php if (sizeof($errors) > 0) { ?>
   <div class="errors">
