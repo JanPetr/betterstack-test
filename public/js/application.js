@@ -42,3 +42,41 @@ function createUser(e) {
 }
 
 $("#create-new-user").submit(createUser);
+
+// Filter table by City
+function filterByCity(e) {
+	const input = e.target;
+	const rows = document.querySelectorAll('#users tbody tr');
+	
+	const filterValue = input.value.toLowerCase()
+	
+	// reset no results
+	const noResults = document.querySelector('#no-results');
+	if (noResults) {
+		noResults.remove();
+	}
+	
+	// Loop through each row of the table
+	let areThereVisibleRows = false;
+	rows.forEach(row => {
+		let cell = row.querySelector('td.city');
+		let city = cell.textContent.toLowerCase()
+		
+		if (city.startsWith(filterValue)) {
+			row.style.display = '';
+			areThereVisibleRows = true;
+		} else {
+			row.style.display = 'none';
+		}
+	});
+
+	if (!areThereVisibleRows) {
+		const noResults = document.createElement('tr');
+		noResults.setAttribute('id', 'no-results');
+		noResults.innerHTML = '<td colspan="4" class="text-center">No results found for query "' + filterValue + '".</td>';
+		document.querySelector('#users tbody').appendChild(noResults);
+	}
+}
+
+const input = document.querySelector('#city-filter');
+input.addEventListener("input", filterByCity);

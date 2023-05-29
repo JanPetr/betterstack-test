@@ -36,7 +36,7 @@
       <td><?= escape($user->getName()) ?></td>
       <td><?= escape($user->getEmail()) ?></td>
       <td><?= escape($user->getPhoneNumber()) ?></td>
-      <td><?= escape($user->getCity()) ?></td>
+      <td class="city"><?= escape($user->getCity()) ?></td>
     </tr>
   <?php } ?>
   </tbody>
