@@ -15,10 +15,14 @@ class User extends BaseModel{
 	public function getName() {
 		return $this->getField('name');
 	}
-	
-	public function getEmail() {
-		return $this->getField('email');
-	}
+
+    public function getEmail() {
+        return $this->getField('email');
+    }
+
+    public function getPhoneNumber() {
+        return $this->getField('phone_number');
+    }
 	
 	public function getCity() {
 		return $this->getField('city');

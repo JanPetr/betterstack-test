@@ -4,7 +4,8 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>E-mail</th>
+      <th>E-mail</th>
+      <th>Phone Number</th>
 			<th>City</th>
 		</tr>
 	</thead>
@@ -12,7 +13,8 @@
 		<?php foreach($users as $user){?>
 		<tr>
 			<td><?=$user->getName()?></td>
-			<td><?=$user->getEmail()?></td>
+      <td><?=$user->getEmail()?></td>
+      <td><?=$user->getPhoneNumber()?></td>
 			<td><?=$user->getCity()?></td>
 		</tr>
 		<?php }?>
@@ -22,13 +24,16 @@
 <form method="post" action="create.php">
 	
 	<label for="name">Name:</label>
-	<input name="name" input="text" id="name"/>
-	
-	<label for="email">E-mail:</label>
-	<input name="email" input="text" id="email"/>
+	<input name="name" type="text" id="name"/>
+
+  <label for="email">E-mail:</label>
+  <input name="email" type="email" id="email"/>
+
+  <label for="phone-number">Phone number:</label>
+  <input name="phone-number" type="text" id="phone-number"/>
 	
 	<label for="city">City:</label>
-	<input name="city" input="text" id="city"/>
+	<input name="city" type="text" id="city"/>
 	
 	<button>Create new row</button>
 </form>
