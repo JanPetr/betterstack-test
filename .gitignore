@@ -1,3 +1,6 @@
 .settings
 .project
 /config/database.php
+/config/logging.php
+
+vendor

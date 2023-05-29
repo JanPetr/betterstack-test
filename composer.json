@@ -1,0 +1,5 @@
+{
+    "require": {
+        "logtail/monolog-logtail": "^3.0"
+    }
+}

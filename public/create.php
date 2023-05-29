@@ -7,6 +7,10 @@ $user = new User($app->db);
 
 $errors = validateForm($_POST);
 if ($errors != []) {
+    $app->logger->error('User creation failed', [
+        'errors' => $errors,
+    ]);
+
     if (isAjax()) {
         $_SESSION['token'] = generateCSRFToken();
 
@@ -33,6 +37,13 @@ $user->insert(array(
     'city' => $_POST['city'],
     'phone_number' => $_POST['phone-number'],
 ));
+
+$app->logger->info('User created', [
+    'name' => $_POST['name'],
+    'email' => $_POST['email'],
+    'city' => $_POST['city'],
+    'phone_number' => $_POST['phone-number'],
+]);
 
 if (isAjax()) {
     $_SESSION['token'] = generateCSRFToken();
