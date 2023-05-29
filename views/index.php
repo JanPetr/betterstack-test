@@ -42,6 +42,8 @@
       <td class="city"><?= escape($user->getCity()) ?></td>
     </tr>
   <?php } ?>
+  </tbody>
+  <tfoot>
   <tr class="add-new-user-row">
     <td colspan="4">
       <div id="message"></div>
@@ -81,5 +83,5 @@
       </form>
     </td>
   </tr>
-  </tbody>
+  </tfoot>
 </table>

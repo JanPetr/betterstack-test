@@ -36,7 +36,7 @@ function createUser(e) {
 				"<td>" + escapeHtml($("#name", form).val()) + "</td>" +
 				"<td><a href=\"mailto:" + escapeHtml($("#email", form).val()) + "\">" + escapeHtml($("#email", form).val()) + "</a></td>" +
 				"<td>" + pnStr + "</td>" +
-				"<td>" + escapeHtml($("#city", form).val()) + "</td>" +
+				"<td class=\"city\">" + escapeHtml($("#city", form).val()) + "</td>" +
 				"</tr>"
 			);
 			
@@ -80,6 +80,10 @@ function filterByCity(e) {
 	let areThereVisibleRows = false;
 	rows.forEach(row => {
 		let cell = row.querySelector('td.city');
+		if (cell == null) {
+			return;
+		}
+		
 		let city = cell.textContent.toLowerCase()
 		
 		if (city.startsWith(filterValue)) {
