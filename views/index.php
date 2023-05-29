@@ -12,10 +12,10 @@
 	<tbody>
 		<?php foreach($users as $user){?>
 		<tr>
-			<td><?=$user->getName()?></td>
-      <td><?=$user->getEmail()?></td>
-      <td><?=$user->getPhoneNumber()?></td>
-			<td><?=$user->getCity()?></td>
+			<td><?=escape($user->getName())?></td>
+      <td><?=escape($user->getEmail())?></td>
+      <td><?=escape($user->getPhoneNumber())?></td>
+			<td><?=escape($user->getCity())?></td>
 		</tr>
 		<?php }?>
 	</tbody>

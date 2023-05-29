@@ -53,4 +53,12 @@ class App {
 	
 }
 
+function escape($string){
+    if ($string === null) {
+        return null;
+    }
+
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
 return new App();
