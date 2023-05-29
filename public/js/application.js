@@ -16,7 +16,7 @@ function createUser(e) {
 			const success = $("<div class='alert alert-success' role='alert'>").text("New user added");
 			$("#message").html(success);
 			
-			$("#users tbody").append(
+			$("#users tbody .add-new-user-row").before(
 				"<tr>" +
 				"<td>" + $("#name", form).val() + "</td>" +
 				"<td>" + $("#email", form).val() + "</td>" +
@@ -69,7 +69,7 @@ function filterByCity(e) {
 			row.style.display = 'none';
 		}
 	});
-
+	
 	if (!areThereVisibleRows) {
 		const noResults = document.createElement('tr');
 		noResults.setAttribute('id', 'no-results');
