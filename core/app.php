@@ -26,6 +26,8 @@ class App {
 		// Load database instance and tell it to connect with given config
 		$this->db = require $this->directory.'/database.php';
 		$this->db->connect($this->config->database);
+
+        session_start();
 	}	
 	
 	/**

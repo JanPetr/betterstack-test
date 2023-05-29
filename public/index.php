@@ -3,6 +3,8 @@
 // Init app instance
 $app = require "../core/app.php";
 
+$_SESSION['token'] = md5(uniqid(mt_rand(), true));
+
 // Get all users from DB, eager load all fields using '*'
 $users = User::find($app->db,'*');
 

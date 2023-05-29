@@ -22,7 +22,8 @@
 </table>				
 
 <form method="post" action="create.php">
-	
+	<input type="hidden" name="token" value="<?=escape($_SESSION['token'])?>"/>
+
 	<label for="name">Name:</label>
 	<input name="name" type="text" id="name"/>
 

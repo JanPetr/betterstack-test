@@ -5,6 +5,11 @@ $app = require "../core/app.php";
 // Create new instance of user
 $user = new User($app->db);
 
+// Check CSRF token
+if ($_POST['token'] !== $_SESSION['token']) {
+    die('Invalid CSRF token');
+}
+
 // Insert it to database with POST data
 $user->insert(array(
     'name' => $_POST['name'],
