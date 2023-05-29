@@ -49,6 +49,9 @@ class App
      */
     public function renderView($viewfile, $vars = array())
     {
+        // set header
+        header('X-Frame-Options: DENY');
+
         // Render array to usable variables
         foreach ($vars as $key => $value) {
             $$key = $value;
