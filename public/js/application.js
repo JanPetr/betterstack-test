@@ -35,7 +35,7 @@ function createUser(e) {
 			$("#message").html(); // reset notice content
 			jsonRes.errors.forEach(error => {
 				const alert = $("<div class='alert alert-danger' role='alert'>").text(error);
-				$("#notice").append(alert);
+				$("#message").append(alert);
 			})
 		}
 	});
