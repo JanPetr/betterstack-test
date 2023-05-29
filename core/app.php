@@ -42,13 +42,13 @@ class App {
 		
 		// Start capturing of output
 		ob_start();
-		include './views/'.$viewfile.'.php';
+		include '../views/'.$viewfile.'.php';
 		// Assign output to $content which will be rendered in layout
 		$content = ob_get_contents();
 		// Stop output capturing
 		ob_end_clean();
 		// Render $content in layout
-		include './views/layout.php';
+		include '../views/layout.php';
 	}
 	
 }

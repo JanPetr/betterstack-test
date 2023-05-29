@@ -9,13 +9,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?foreach($users as $user){?>
+		<?php foreach($users as $user){?>
 		<tr>
 			<td><?=$user->getName()?></td>
 			<td><?=$user->getEmail()?></td>
 			<td><?=$user->getCity()?></td>
 		</tr>
-		<?}?>
+		<?php }?>
 	</tbody>
 </table>				
 
