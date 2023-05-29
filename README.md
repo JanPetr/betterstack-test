@@ -1,16 +1,16 @@
-# PHP Test Project
-Appivia.com
+# Manage your contacts like a Pro!
 
-### Description
+## Description
 This is a very simple one-page application consisting of a single table and a form for creating new rows. To make it a little more complicated, we have written a 'framework' you have to use. Below is a set of simple tasks to perform. Please write a production-ready code.
 
-### Installation
+## Installation
 1. Fork this repository
 2. Create a new MySQL database
-3. Rename `config/database` to `config/database.php` and configure your database connection settings in this file
-4. Import `database/schema.sql` into your database
+3. Rename `config/database` to `config/database.php` and configure your database connection settings in this file 
+4. Rename `config/logging` to `config/logging.php` and configure your logging connection settings in this file
+5. Import `database/schema.sql` into your database
 
-### Tasks to perform
+## Tasks to perform
 1. Style the page using [Bootstrap](http://getbootstrap.com/):
   * Every other table row should be highlighted.
   * Use Bootstrap’s form-horizontal to style the form.
