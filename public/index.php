@@ -10,5 +10,6 @@ $users = User::find($app->db,'*');
 
 // Render view 'views/index.php' and pass users variable there
 $app->renderView('index', array(
-	'users' => $users
+	'users' => $users,
+    'errors' => array_key_exists('errors', $_GET) ? $_GET['errors'] : array()
 ));

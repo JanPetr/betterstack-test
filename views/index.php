@@ -1,5 +1,16 @@
 <h1>PHP Test Application</h1>
 
+<?php if (sizeof($errors) > 0 ){?>
+  <div class="errors">
+    <h2>Errors</h2>
+    <p>Please fix the following errors:</p>
+    <ul>
+      <?php foreach ($errors as $error) {?>
+        <li><?=escape($error)?></li>
+      <?php }?>
+    </ul>
+<?php }?>
+
 <table>
 	<thead>
 		<tr>
